@@ -1,8 +1,7 @@
-package Package14_041821;
+package Day14_041821;
 
 import Google_Page_Objects.Base_Class;
 import ReusableLibrary.Abstract_Class;
-import org.jsoup.Connection;
 import org.testng.annotations.Test;
 
 public class Google_Search_PageObject extends Abstract_Class {

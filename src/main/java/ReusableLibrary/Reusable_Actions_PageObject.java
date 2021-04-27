@@ -7,14 +7,20 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
 public class Reusable_Actions_PageObject {
+
+    private ExtentTest logger;
 
     //create a reusable method for navigate to a page
     public static WebDriver defineTheDriver() throws InterruptedException, IOException {
@@ -169,11 +175,12 @@ public class Reusable_Actions_PageObject {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         //use try catch to locate an element and click on it
         try {
-            wait.until(ExpectedConditions.visibilityOf(xpathLocator)).click();
-            logger.log(LogStatus.PASS, "Successfully close pop up " + elementName);
+            driver.switchTo().alert().dismiss();
+            wait.until(ExpectedConditions.visibilityOf(xpathLocator)).submit();
+            logger.log(LogStatus.PASS, "Successfully close pop up " );
         } catch (Exception e) {
-            System.out.println("Popup " + elementName + " is mot present. Move on the next step");
-            logger.log(LogStatus.FAIL, "Unable to close pop up " + elementName + " " + e);
+            System.out.println("Popup is not present. Move on the next step");
+            logger.log(LogStatus.FAIL, "Unable to close pop up " + e);
             getScreenShot(driver,elementName,logger);
         }
     }//end of close pop up method
@@ -197,7 +204,6 @@ public class Reusable_Actions_PageObject {
             e.printStackTrace();
         }
     }//end of getScreenshot method
-
 
 
 } // end of java class

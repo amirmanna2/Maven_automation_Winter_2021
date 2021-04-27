@@ -23,7 +23,7 @@ public class Abstract_Class {
     public void setDriver() throws IOException, InterruptedException {
         driver = Reusable_Actions.defineTheDriver();
         //set the path to the report that I want to use
-        reports = new ExtentReports("src/main/java/HTML_Report/Automation_Report.html");
+        reports = new ExtentReports("src/main/java/HTML_Report/Automation_Report1.html");
     }//end of before suite
 
     //before method will start the log for your report and capture the test Name
